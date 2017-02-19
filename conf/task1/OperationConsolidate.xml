@@ -1,0 +1,11 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<operation.OperationConsolidate>
+
+
+    <consolidate>
+        <datasource>conf/task1/OperationCount.xml</datasource>
+        <datasource>conf/task1/ReportToolFilter.xml</datasource>
+
+    </consolidate>
+
+</operation.OperationConsolidate>
