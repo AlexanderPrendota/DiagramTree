@@ -5,7 +5,6 @@
     <consolidate>
         <datasource>conf/task1/OperationCount.xml</datasource>
         <datasource>conf/task1/ReportToolFilter.xml</datasource>
-
     </consolidate>
 
 </operation.OperationConsolidate>

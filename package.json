@@ -1,0 +1,19 @@
+{
+  "name": "radar",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Alexander Prendota",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jquery": "*",
+    "gojs": ">=1.5.18",
+     "electron-prebuilt": "^1.4.13"
+  },
+  "web-preferences" : {
+    "web-security" : false
+  }
+}

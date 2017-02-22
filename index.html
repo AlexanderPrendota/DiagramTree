@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
- 	<head>
-	    <meta charset="utf-8">
-	    <meta name="author" content="Alexander Prendota">
-	    <title>RADAR</title>
-	    <script src="js/go.js"></script>
-	    <script src="js/go-debug.js"></script>
-	    <script>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Alexander Prendota">
+        <title>RADAR</title>
+        <script src="js/goIntro.js"></script>
+        <script>
+            var $ = require('jquery');
             var currentFile ="conf/CreateDiagram.xml";
             var key = 1;
             var parent = 0;
             var datas = [];
 
-           
             function readXML() { $.ajax({
                 url: currentFile,
                 dataType: "xml",
@@ -30,22 +29,17 @@
                         currentFile = $(this).text();
                         readXML();
                         key++;
-                        //alert($(this).text());
+
                     });
                     parent++;
                 }
             }
 
-	    </script>
- 	</head>
+        </script>
+    </head>
 
- 	<body onload="readXML()">
-    <button onclick="goIntro(datas)">MAKE DIAGRAM</button>
-	<div id="myDiagramDiv" style="width:1440px; height:900px; background-color: #DAE4E4;"></div>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script src="js/goIntro.js"></script>
-	</body>
+    <body onload="readXML()">
+      <button onclick="goIntro(datas)">MAKE DIAGRAM</button>
+      <div id="myDiagramDiv" style="width:1480px; height:900px; background-color: #DAE4E4;"></div>
+    </body>
 </html>
-
