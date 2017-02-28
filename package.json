@@ -3,17 +3,25 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build-osx": "electron-packager . radar --platform darwin --icon icon.icns",
   },
   "author": "Alexander Prendota",
+  "electron-packager": "^8.1.0",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "jquery": "*",
+    "electron-builder": "^14.1.1",
+    "electron-packager": "^8.5.2",
+    "electron-prebuilt": "^1.4.13",
     "gojs": ">=1.5.18",
-     "electron-prebuilt": "^1.4.13"
+    "node-run-cmd": "*"
+
   },
-  "web-preferences" : {
-    "web-security" : false
+  "web-preferences": {
+    "web-security": false
+  },
+  "dependencies": {
+    "node-run-cmd": "^1.0.1"
   }
 }
