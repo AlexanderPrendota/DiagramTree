@@ -7,32 +7,46 @@
         <script src="js/goIntro.js"></script>
         <script>
             var $ = require('./js/jquery.min.js');
+            var fs = require('fs');
             var currentFile ="conf/CreateDiagram.xml";
             var key = 1;
             var parent = 0;
             var datas = [];
 
-            function readXML() { $.ajax({
-                url: currentFile,
-                dataType: "xml",
-                success: parse,
-                error: function(){alert("Error: Something went wrong");}
-            });
 
-                function parse(document){
-                    $(document).find("datasource").each(function(){
-                        datas.push({
-                            key: key.toString(),
-                            parent: parent.toString(),
-                            name: $(this).text()
-                        });
-                        currentFile = $(this).text();
-                        readXML();
-                        key++;
-
+            function readXML() {
+                fs.readFile(currentFile,'utf-8',
+                    function(err, data) {
+                        if (err) {
+                            alert("Error: Something went wrong");
+                        } else {
+                            parse(data);
+                        }
                     });
-                    parent++;
-                }
+            }
+
+            /*
+             function readXML() { $.ajax({
+             url: currentFile,
+             dataType: "xml",
+             success: parse,
+             error: function(){alert("Error: Something went wrong");}
+             });
+             */
+
+            function parse(document){
+                $(document).find("datasource").each(function(){
+                    datas.push({
+                        key: key.toString(),
+                        parent: parent.toString(),
+                        name: $(this).text()
+                    });
+                    currentFile = $(this).text();
+                    readXML();
+                    key++;
+
+                });
+                parent++;
             }
 
         </script>

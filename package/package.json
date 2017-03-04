@@ -1,0 +1,30 @@
+{
+    "name": "radar",
+    "version": "1.0.0",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build-osx": "electron-packager . radar --platform darwin --icon icon.icns",
+        "build-win32": "electron-packager . radar --platform win32 --overwrite"
+    },
+    "author": "Alexander Prendota",
+    "electron-packager": "^8.1.0",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "electron-builder": "^14.1.1",
+        "electron-packager": "^8.5.2",
+        "electron": ">=1.4.13",
+        "gojs": ">=1.5.18",
+        "node-run-cmd": "*",
+        "jquery": "*"
+    },
+    "web-preferences": {
+        "web-security": false
+    },
+    "dependencies": {
+        "jquery": "*",
+        "gojs": ">=1.5.18",
+        "node-run-cmd": "^1.0.1"
+    }
+}
