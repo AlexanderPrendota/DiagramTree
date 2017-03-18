@@ -1,59 +1,92 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="author" content="Alexander Prendota">
-        <title>RADAR</title>
-        <script src="js/goIntro.js"></script>
-        <script>
-            var $ = require('./js/jquery.min.js');
-            var fs = require('fs');
-            var currentFile ="conf/CreateDiagram.xml";
-            var key = 1;
-            var parent = 0;
-            var datas = [];
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Radar Tool</title>
+    <meta charset="UTF-8">
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+
+        var $ = require('jquery');
+        var fs = require('fs');
+
+        var currentFile = "conf/CreateDiagram.xml";
+        var key = 1;
+        var parent = 0;
+        var datas = [];
+        var i = 0;
+
+        function main() {
+            readXML();
+            goIntro(datas);
+
+        }
+
+        function restart() {
+            goIntro(datas);
+            clearScope();
+
+        }
+        function clearScope() {
+            datas = [];
+            key = 1;
+            parent = 0;
+            currentFile = "conf/CreateDiagram.xml";
+        }
 
 
-            function readXML() {
-                fs.readFile(currentFile,'utf-8',
-                    function(err, data) {
-                        if (err) {
-                            alert("Error: Something went wrong");
-                        } else {
-                            parse(data);
-                        }
-                    });
-            }
+        function readXML() {
+            fs.readFile(currentFile,'utf-8',
+                function(err, data) {
+                    if (err) {
+                        console.log("Error: Something went wrong");
+                    } else {
+                        parse(data);
+                    }
+                });
+        }
 
-            /*
-             function readXML() { $.ajax({
-             url: currentFile,
-             dataType: "xml",
-             success: parse,
-             error: function(){alert("Error: Something went wrong");}
-             });
-             */
-
-            function parse(document){
-                $(document).find("datasource").each(function(){
-                    datas.push({
-                        key: key.toString(),
-                        parent: parent.toString(),
-                        name: $(this).text()
-                    });
-                    currentFile = $(this).text();
-                    readXML();
-                    key++;
+        function parse(document){
+            $(document).find("datasource").each(function(){
+                datas.push({
+                    key: key.toString(),
+                    parent: parent.toString(),
+                    name: $(this).text(),
 
                 });
-                parent++;
-            }
+                currentFile = $(this).text();
+                //console.log(currentFile);
+                console.log(i++);
+                readXML();
+                key++;
 
-        </script>
-    </head>
+            });
+            parent++;
+        }
+    </script>
+</head>
 
-    <body onload="readXML()">
-      <button onclick="goIntro(datas)">MAKE DIAGRAM</button>
-      <div id="myDiagramDiv" style="width:1480px; height:900px; background-color: #DAE4E4;"></div>
-    </body>
+<body onload="main()">
+
+<div id="sample" style="background-color:#DAE4E4;" >
+    <div style="width:100%; white-space:nowrap;">
+		    <span style="display: inline-block; vertical-align: top; width:200px">
+		      <div id="myPaletteDiv" style="border: solid 1px black; height: 650px"></div>
+		    </span>
+
+        <span style="display: inline-block; vertical-align: top; width:85.4%">
+		      <div id="myDiagramDiv" style="border: solid 1px black; height: 650px"></div>
+		    </span>
+    </div>
+</div>
+<a href="#" class="action-button shadow animate blue" onclick="restart();">MAKE DIAGRAM</a>
+<a href="#" class="action-button shadow animate red" onclick="readXML();">Save</a>
+<a href="#" class="action-button shadow animate green" onclick="run();">RUN</a>
+
+
+<script src="js/goIntro.js"></script>
+<script src="js/run.js"></script>
+</body>
+
 </html>

@@ -12,12 +12,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "electron-builder": "^14.1.1",
+    "electron-builder": "^14.5.2",
     "electron-packager": "^8.5.2",
-    "electron": ">=1.4.13",
     "gojs": ">=1.5.18",
+    "jquery": "*",
     "node-run-cmd": "*",
-    "jquery": "*"
+    "smalltalk" : "*"
   },
   "web-preferences": {
     "web-security": false
@@ -25,6 +25,8 @@
   "dependencies": {
     "jquery": "*",
     "gojs": ">=1.5.18",
-    "node-run-cmd": "^1.0.1"
+    "node-run-cmd": "^1.0.1",
+    "smalltalk" : "*"
   }
 }
+
