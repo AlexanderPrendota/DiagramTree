@@ -132,12 +132,12 @@ function goIntro(data) {
 
                 } else if(color === "#82BF56") {
 
-                    nrc.run("open conf/" + fileName+".xml");
+                    nrc.run("start conf/" + fileName+".xml");
 
 
                 } else {
-                    console.log('open ' + fileName);
-                    nrc.run('open ' + fileName,
+                    console.log('start ' + fileName);
+                    nrc.run('start ' + fileName,
                         { onDone: callback ,
                             onError: error,
                             onData: data,
